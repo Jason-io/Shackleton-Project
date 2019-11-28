@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -10,6 +9,7 @@
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 
 	<script>
+    
 		function chk_ans()
 		{
 		   my_elem = document.getElementById('ans');
@@ -20,99 +20,117 @@
     {
       a = document.getElementById('username').value;
       b = document.getElementById('password').value;
-      c = "user";
-      d = "pass";
+      c = 'User';
+      d = 'pass';
       if (a===c && b===d)
       {
         var navigator = document.getElementById('navigator');
-        navigator.resetToPage('shackleton.html');
+        navigator.pushPage('shackleton.html');
+        
       }
       else
       {
         ons.notification.alert('Username or Password incorrect!');
       }
     }
+    function quiz()
+    {
+      var navigator = document.getElementById('navigator');
+      navigator.pushPage('quiz.html');
+    }
 	</script>
 </head>
 
 <body>
-  <ons-navigator id="navigator">
-  <ons-page>
+  
+  <ons-navigator id='navigator'>
+    <ons-page>
 
-    <ons-toolbar id="home-toolbar">
-      <div class="left">Home</div>
+      
+
+      <div style="text-align:center;margin-top: 200px">
+        <p>
+          <ons-input id='username' placeholder='Username' modifier='underbar'>
+          </ons-input>
+        </p>
+
+        <p>
+          <ons-input 
+            id='password'
+            placeholder='Password'
+            type='password'
+            modifier='underbar'>
+          </ons-input>
+        </p>
+
+        <p>
+          <ons-button onClick='login()'>Sign in</ons-button>
+        </p>
+      </div>
+    </ons-page>
+  </ons-navigator>
+        
+  <ons-template id='shackleton.html'>
+    <ons-page id='shackleton'>
+
+      <ons-toolbar id="home-toolbar">
+        <div class="left">Home</div>
+        <div class="center" onClick='quiz()'>Quiz</div>
+        <div class="center"> Imagine Copying Kagan's Project</div>
       </ons-toolbar>
 
-    <div style="text-align:center;margin-top: 200px">
-      <p>
-        <ons-input id="username" placeholder="Username" modifier="underbar">
-        </ons-input>
-      </p>
+      <div id="wrapper">
+      
+      <div id="header">
+        <h2> Ernest Shackleton (1874 - 1922) </h2>
+      
+        <img src="images/shackletonicon.jpg" alt="Ernest Shackleton at Dulwich College"/>
+      </div>
+      <div id="nav">
+      <ul>
+        <li> Shackleton's Life </li>
+        <li> Dulwich College </li>
+        <li> Endurance Expedition </li>
+        <li> James Caird </li>
+      </ul>
+      </div>
+      <h3> Shackleton's Life </h3>
 
-      <p>
-        <ons-input 
-          id="password"
-          placeholder="Password"
-          type="password"
-          modifier="underbar">
-        </ons-input>
-      </p>
+      <div id="container">
 
-      <p>
-        <ons-button onClick='login()'>Sign in</ons-button>
-      </p>
-    </div>
-  </ons-page>
-  </ons-navigator>
+        <p class="snippet"> <a href="https://tr.wikipedia.org/wiki/Ernest_Shackleton" target="_blank">  Sir Ernest Shackleton </a> was an Anglo-Irish Antarctic explorer and is famous, principally, for leading the Imperial Trans-Antartic (Endurance) Expedition of 1914-16. </p>
+        <p class="snippet"> He was one of the principal figures of the period known as the Heroic Age of Antartic Exploration. Educated at Dulwich College and having ignored his father's wishes that he become a doctor he joined the merchant navy. Of many quotes one of his most famous is,<span class="myquote">"Difficulties are just things to overcome, after all."</span> </p>
+        <p class="snippet"> During his life he made three trips to the Antarctic. As well as climbing Mount Erebus he made many important scientific discoveries. On his fourth expedition to circumnavigate the Antartic he died of a heart attack. He was buried on the Island of South Georgia.</p>
+      </div>
 
-  <ons-template id="shackleton.html">>
-    <ons-page id="shackleton">
+      <div class="clearme"></div>
+      <div id="footer">
+        Thank you for visiting my page
+      </div>
+      </div>
+    </ons-page>
+    </ons-template>
+
+  <ons-template id='quiz.html'>
+    <ons-page id='quiz'>
+      <div id='quiz'>
+
+          <ons-toolbar id="home-toolbar">
+
+            <div class="left" onClick=
+              "var navigator = document.getElementById('navigator');navigator.popPage();">
+              Back
+            </div>
+            </ons-toolbar>
+              
+        </br>      
+        <h3> Quiz </h3>
+        <p> How far (according to Shackleton's wikipedia page) is it from Elephant Island to South Georgia in Nautical Miles? <span class="myquote" id="ans">  </span>  </p>
+        <p> <button onClick='chk_ans()'> Check Answer</button></p>
         
-	<div id="wrapper">
-	
-	<div id="header">
-		<h2> Ernest Shackleton (1874 - 1922) </h2>
-	
-		<img src="images/shackletonicon.jpg" alt="Ernest Shackleton at Dulwich College"/>
-	</div>
-	<div id="nav">
-	<ul>
-		<li> Shackleton's Life </li>
-		<li> Dulwich College </li>
-		<li> Endurance Expedition </li>
-		<li> James Caird </li>
-	</ul>
-	</div>
-	<h3> Shackleton's Life </h3>
-
-	<div id="container">
-
-		<p class="snippet"> <a href="https://tr.wikipedia.org/wiki/Ernest_Shackleton" target="_blank">  Sir Ernest Shackleton </a> was an Anglo-Irish Antarctic explorer and is famous, principally, for leading the Imperial Trans-Antartic (Endurance) Expedition of 1914-16. </p>
-		<p class="snippet"> He was one of the principal figures of the period known as the Heroic Age of Antartic Exploration. Educated at Dulwich College and having ignored his father's wishes that he become a doctor he joined the merchant navy. Of many quotes one of his most famous is,<span class="myquote">"Difficulties are just things to overcome, after all."</span> </p>
-		<p class="snippet"> During his life he made three trips to the Antarctic. As well as climbing Mount Erebus he made many important scientific discoveries. On his fourth expedition to circumnavigate the Antartic he died of a heart attack. He was buried on the Island of South Georgia.</p>
-	</div>
-
-	<div class="clearme"></div>
-
-	<div id="quiz">
-		<h3> Quiz </h3>
-		<p> How far (according to Shackleton's wikipedia page) is it from Elephant Island to South Georgia in Nautical Miles? <span class="myquote" id="ans">  </span>  </p>
-		<p> <button onClick='chk_ans()'> Check Answer</button></p>
-	</div>
-	<div id="footer">
-		Thank you for visiting my page
-	</div>
-	</div>
-
+        </div>
   </ons-page>
   </ons-template>
 </body>
-
-<ons-template id="quiz.html">>
-
-      <div class="center" onClick = "quiz()">Quiz
-        </div>
-      
-
 
 </html>
